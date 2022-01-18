@@ -3,13 +3,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>All users</title>
 </head>
 <body>
-<div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
-</div>
+<h1>Users</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Year</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.name}"/>
+        <td th:text="${user.lastName}"/>
+        <td th:text="${user.year}"/>
+        <td><a th:href="@{'users/edit?id=' + ${user.getId()}}">Update</a></td>
+        <td><a th:href="@{'users/delete?id=' + ${user.getId()}}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<input type="button" value="Add user" onclick="window.location.href = 'users/new'"/>
 </body>
 </html>
