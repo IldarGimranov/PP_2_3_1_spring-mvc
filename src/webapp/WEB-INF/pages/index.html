@@ -18,12 +18,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user : ${users}">
+    <tr th:each="user : ${user}">
         <td th:text="${user.name}"/>
         <td th:text="${user.lastName}"/>
         <td th:text="${user.year}"/>
         <td><a th:href="@{'users/edit?id=' + ${user.getId()}}">Update</a></td>
-        <td><a th:href="@{'users/delete?id=' + ${user.getId()}}">Delete</a></td>
+        <td>
+           <form th:method="POST" th:action="@{/users/delete?id={id}(id=${user.getId()})}">
+                <input type="submit" value="Delete">
+            </form> </a>
+        </td>
     </tr>
     </tbody>
 </table>

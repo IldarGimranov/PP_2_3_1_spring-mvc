@@ -5,25 +5,23 @@
     <title>Add user</title>
 </head>
 <body>
-
-<form method="POST" action="/users">
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
     <label for="name">Name: </label>
-    <input name="name" type="text" id="name">
+    <input type="text" th:field="*{name}"  id="name"/>
+    <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
 
-    <br>
-
-    <label for="lastName">Last name: </label>
-    <input name="lastName" type="text" id="lastName">
-
-    <br>
+    <label for="lastname">Last name: </label>
+    <input type="text" th:field="*{lastName}"  id="lastname"/>
+    <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName error</div>
 
     <label for="year">Year: </label>
-    <input name="year" type="text" id="year">
+    <input type="text" th:field="*{year}"  id="year"/>
+    <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</div>
 
-    <br>
-    <br>
-
-    <input type="submit" value="Add user">
+    <input type="submit" value="Save">
 
 </form>
 

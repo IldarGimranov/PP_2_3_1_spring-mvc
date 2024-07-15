@@ -13,18 +13,18 @@
 
     <label for="name">Enter new name: </label>
     <input type="text" th:field="*{name}" id="name"/>
-
     <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
 
     <label for="lastname">Enter new lastname: </label>
     <input type="text" th:field="*{lastName}" id="lastname"/>
-
     <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName error</div>
 
-    <label for="age">Enter new age: </label>
-    <input type="text" th:field="*{year}" id="age"/>
-
+    <label for="year">Enter new year: </label>
+    <input type="text" th:field="*{year}" id="year"/>
     <br/>
+    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</div>
 
     <input type="submit" value="Update">
 </form>

@@ -1,12 +1,14 @@
 package web.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -17,16 +19,19 @@ public class User {
     @Column(name = "id")
     private long id;
 
+    @Size(min = 2, max = 50, message = "Слишком короткое или длинное имя")
     @Column(name = "name")
     private String name;
 
-    @Column(name = "lastName")
+    @Size(min = 2, max = 50, message = "Слишком короткая или длинная фамилия")
+    @Column(name = "lastname")
     private String lastName;
 
+    @Min(value = 0, message = "Год не может быть меньше 0")
     @Column(name = "year")
-    private String year;
+    private int year;
 
-    public User(String name, String lastName, String year) {
+    public User(String name, String lastName, int year) {
         this.name = name;
         this.lastName = lastName;
         this.year = year;
@@ -39,7 +44,7 @@ public class User {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,11 +64,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
