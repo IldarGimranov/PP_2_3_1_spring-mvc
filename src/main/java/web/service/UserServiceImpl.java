@@ -2,12 +2,11 @@ package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Validator;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Validator;
 import web.dao.UserDao;
 import web.model.User;
 
-//import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -21,13 +20,13 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-    @Transactional (readOnly = true)
+    @Transactional(readOnly = true)
     @Override
     public List<User> readingAllUsers() {
         return userDao.readingAllUsers();
     }
 
-    @Transactional (readOnly = true)
+    @Transactional(readOnly = true)
     @Override
     public User readUser(Long id) {
         return userDao.readUser(id);

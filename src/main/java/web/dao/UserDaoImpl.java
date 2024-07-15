@@ -37,8 +37,7 @@ public class UserDaoImpl implements UserDao {
             user1.setLastName(user.getLastName());
             user1.setYear(user.getYear());
             em.merge(user);
-        }
-        catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             throw new EntityNotFoundException();
         }
 
